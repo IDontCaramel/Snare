@@ -40,3 +40,6 @@ replay_*.log
 *.hprof
 *.jfr
 cleanup.md
+/panelstudio-src
+/logs
+panelstudio-guide.md
