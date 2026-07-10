@@ -42,4 +42,9 @@ class ModuleManagerTest {
         broken.failTick = true; broken.setEnabled(true); healthy.setEnabled(true); manager.register(broken); manager.register(healthy);
         assertDoesNotThrow(() -> manager.tick(null)); assertEquals(1, healthy.ticks);
     }
+    @Test void exampleExposesEverySettingTypeInStableOrder() {
+        ExampleModule example = new ExampleModule(() -> {});
+        assertEquals(List.of("show_hud", "offset", "label_mode", "label_text", "toggle_key"), example.settings().stream().map(setting -> setting.id()).toList());
+        assertEquals(List.of("BooleanSetting", "NumberSetting", "ModeSetting", "TextSetting", "KeybindSetting"), example.settings().stream().map(setting -> setting.getClass().getSimpleName()).toList());
+    }
 }
