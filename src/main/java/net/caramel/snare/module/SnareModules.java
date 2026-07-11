@@ -16,5 +16,14 @@ public final class SnareModules {
         manager.register(new FogControlModule(saveRequest));
         manager.register(new NoWorldBorderModule(saveRequest));
         manager.register(new NoItemCooldownModule(saveRequest));
+        manager.register(new SlipperyModule(saveRequest));
+        manager.register(new JumpVelocityModule(saveRequest));
+        manager.register(new BoatTweaksModule(saveRequest));
+        manager.register(new CreativeElytraFlightModule(saveRequest));
+        manager.register(new GravityTweaksModule(saveRequest));
+        manager.register(new StepHeightModule(saveRequest));
+        manager.register(new HorseTweaksModule(saveRequest));
+        manager.register(new NoSlowModule(saveRequest));
+        manager.register(new NoJumpDelayModule(saveRequest));
     }
 }
