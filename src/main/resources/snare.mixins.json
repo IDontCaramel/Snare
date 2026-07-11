@@ -13,7 +13,9 @@
     "render.BackgroundRendererMixin",
     "inventory.PlayerArmorSlotMixin",
     "item.ItemCooldownManagerMixin",
-    "render.WorldBorderMixin"
+    "render.WorldBorderMixin",
+    "render.OperatorBlockMixin",
+    "render.ClientWorldMixin"
   ],
   "injectors": {
     "defaultRequire": 1
