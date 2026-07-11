@@ -3,7 +3,10 @@
   "minVersion": "0.8",
   "package": "net.caramel.snare.mixin",
   "compatibilityLevel": "JAVA_17",
-  "client": [],
+  "client": [
+    "spectator.TeleportSpectatorMenuMixin",
+    "spectator.TeleportToSpecificPlayerSpectatorCommandMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }
