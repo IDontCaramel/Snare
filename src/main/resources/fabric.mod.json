@@ -9,6 +9,7 @@
   "icon": "assets/snare/icon.png",
   "environment": "client",
   "entrypoints": { "client": ["net.caramel.snare.SnareClient"] },
+  "mixins": ["snare.mixins.json"],
   "depends": {
     "fabricloader": ">=0.19.3",
     "minecraft": "~1.20.1",
