@@ -10,6 +10,7 @@ public final class ModuleManager {
     private final LinkedHashMap<String, Module> modules = new LinkedHashMap<>();
     private final Map<String, Boolean> keyStates = new HashMap<>();
     public void register(Module module) { if (modules.putIfAbsent(module.id(), module) != null) throw new IllegalArgumentException("duplicate module id " + module.id()); }
+    public <T extends Module> Optional<T> get(Class<T> type) { Objects.requireNonNull(type); return modules.values().stream().filter(type::isInstance).map(type::cast).findFirst(); }
     public List<Module> modules() { return List.copyOf(modules.values()); }
     public Map<ModuleCategory,List<Module>> groupedByCategory() {
         Map<ModuleCategory,List<Module>> grouped = new LinkedHashMap<>();
