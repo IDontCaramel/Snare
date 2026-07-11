@@ -5,7 +5,10 @@
   "compatibilityLevel": "JAVA_17",
   "client": [
     "spectator.TeleportSpectatorMenuMixin",
-    "spectator.TeleportToSpecificPlayerSpectatorCommandMixin"
+    "spectator.TeleportToSpecificPlayerSpectatorCommandMixin",
+    "sign.AbstractSignEditScreenMixin",
+    "sign.SignBlockEntityRendererMixin",
+    "book.BookEditScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
