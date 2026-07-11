@@ -8,7 +8,8 @@
     "spectator.TeleportToSpecificPlayerSpectatorCommandMixin",
     "sign.AbstractSignEditScreenMixin",
     "sign.SignBlockEntityRendererMixin",
-    "book.BookEditScreenMixin"
+    "book.BookEditScreenMixin",
+    "movement.LivingEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
