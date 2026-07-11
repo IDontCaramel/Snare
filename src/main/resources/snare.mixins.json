@@ -9,7 +9,11 @@
     "sign.AbstractSignEditScreenMixin",
     "sign.SignBlockEntityRendererMixin",
     "book.BookEditScreenMixin",
-    "movement.LivingEntityMixin"
+    "movement.LivingEntityMixin",
+    "render.BackgroundRendererMixin",
+    "inventory.PlayerArmorSlotMixin",
+    "item.ItemCooldownManagerMixin",
+    "render.WorldBorderMixin"
   ],
   "injectors": {
     "defaultRequire": 1
