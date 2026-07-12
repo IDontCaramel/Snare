@@ -1,5 +1,6 @@
 package net.caramel.snare.module.tweak;
 
+import net.caramel.snare.SnareClient;
 import net.caramel.snare.module.Module;
 import net.caramel.snare.module.ModuleCategories;
 import net.minecraft.client.MinecraftClient;
@@ -18,6 +19,11 @@ public final class CreativeElytraFlightModule extends Module {
 
     public CreativeElytraFlightModule(Runnable saveRequest) {
         super("creative_elytra_flight", "Creative Elytra Flight", "Switches an elytra glide into creative-style flight.", ModuleCategories.MOVEMENT, saveRequest);
+    }
+
+    @Override
+    protected void onEnable() {
+        SnareClient.modules().get(ElytraRecastModule.class).ifPresent(m -> m.setEnabled(false));
     }
 
     public void begin(ClientPlayerEntity player) {

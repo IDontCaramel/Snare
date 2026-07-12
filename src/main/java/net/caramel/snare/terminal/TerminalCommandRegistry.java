@@ -1,0 +1,8 @@
+package net.caramel.snare.terminal;
+import java.util.*;
+public final class TerminalCommandRegistry {
+    private final LinkedHashMap<String,TerminalCommand> commands=new LinkedHashMap<>();
+    public void register(TerminalCommand command){String name=command.name().toLowerCase(Locale.ROOT);if(commands.containsKey(name))throw new IllegalArgumentException("Command already registered: "+command.name());commands.put(name,command);}
+    public void execute(String input,TerminalCommandContext context){String trimmed=input.trim();if(trimmed.isEmpty())return;int space=trimmed.indexOf(' ');String cmdName=space==-1?trimmed:trimmed.substring(0,space);String arguments=space==-1?"":trimmed.substring(space+1).trim();TerminalCommand cmd=commands.get(cmdName.toLowerCase(Locale.ROOT));if(cmd==null){context.output().accept("Unknown command: "+cmdName);return;}cmd.execute(arguments,context);}
+    public List<TerminalSuggestion> suggest(String input){String trimmed=input.trim();if(trimmed.isEmpty()){List<TerminalSuggestion> result=new ArrayList<>();for(TerminalCommand cmd:commands.values())result.add(new TerminalSuggestion(cmd.name()+" ",cmd.usage(),cmd.description()));return result;}int space=trimmed.indexOf(' ');if(space==-1){String prefix=trimmed.toLowerCase(Locale.ROOT);List<TerminalSuggestion> result=new ArrayList<>();for(TerminalCommand cmd:commands.values())if(cmd.name().toLowerCase(Locale.ROOT).startsWith(prefix))result.add(new TerminalSuggestion(cmd.name()+" ",cmd.usage(),cmd.description()));return result;}String cmdName=trimmed.substring(0,space).toLowerCase(Locale.ROOT);String afterSpace=trimmed.substring(space+1);TerminalCommand cmd=commands.get(cmdName);if(cmd!=null)return cmd.suggest(afterSpace);return List.of();}
+}

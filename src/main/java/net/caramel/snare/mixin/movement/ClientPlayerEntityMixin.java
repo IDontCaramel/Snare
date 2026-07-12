@@ -1,6 +1,7 @@
 package net.caramel.snare.mixin.movement;
 
 import net.caramel.snare.SnareClient;
+import net.caramel.snare.event.type.MountJumpStrengthEvent;
 import net.caramel.snare.module.tweak.HorseTweaksModule;
 import net.caramel.snare.module.tweak.NoSlowModule;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -8,8 +9,10 @@ import net.minecraft.entity.JumpingMount;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ClientPlayerEntity.class)
 public abstract class ClientPlayerEntityMixin {
@@ -35,5 +38,12 @@ public abstract class ClientPlayerEntityMixin {
     private int snare$mountJumpCooldown(JumpingMount mount) {
         HorseTweaksModule module = SnareClient.modules().get(HorseTweaksModule.class).orElse(null);
         return module != null && module.isEnabled() ? 0 : mount.getJumpCooldown();
+    }
+
+    @Inject(method = "getMountJumpStrength()F", at = @At("RETURN"), cancellable = true)
+    private void snare$mountJumpStrength(CallbackInfoReturnable<Float> cir) {
+        MountJumpStrengthEvent event = SnareClient.events().post(
+            new MountJumpStrengthEvent((ClientPlayerEntity) (Object) this, cir.getReturnValueF()));
+        cir.setReturnValue(event.strength());
     }
 }

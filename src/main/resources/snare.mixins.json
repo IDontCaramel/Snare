@@ -15,12 +15,21 @@
     "movement.BoatEntityMixin",
     "movement.CamelEntityMixin",
     "movement.PlayerEntityMixin",
+    "movement.KeyboardInputMixin",
+    "movement.PlayerJumpMixin",
     "render.BackgroundRendererMixin",
     "inventory.PlayerArmorSlotMixin",
     "item.ItemCooldownManagerMixin",
     "render.WorldBorderMixin",
     "render.OperatorBlockMixin",
-    "render.ClientWorldMixin"
+    "render.ClientWorldMixin",
+    "network.ClientConnectionMixin",
+    "behavior.ClientPlayerPortalMixin",
+    "behavior.ClientPlayerInteractionManagerMixin",
+    "interpolation.LivingEntityInterpolationMixin",
+    "interpolation.BoatEntityInterpolationMixin",
+    "interpolation.AbstractMinecartEntityInterpolationMixin",
+    "movement.SaddleableEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
